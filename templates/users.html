@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des utilisateurs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Liste des utilisateurs</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Pseudo</th>
+                <th>Mot de passe</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.pseudo }}</td>
+                <td>{{ user.mdp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('index') }}">Ajouter un nouvel utilisateur</a>
+</body>
+</html>

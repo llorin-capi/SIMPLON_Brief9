@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Connexion</h1>
+    
+    <form action="/login" method="POST">
+        <label for="pseudo">Pseudo :</label>
+        <input type="text" id="pseudo" name="pseudo" required><br>
+
+        <label for="mdp">Mot de passe :</label>
+        <input type="password" id="mdp" name="mdp" required><br>
+
+        <input type="submit" value="Se connecter">
+    </form>
+
+    <a href="{{ url_for('index') }}">Retour</a>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
